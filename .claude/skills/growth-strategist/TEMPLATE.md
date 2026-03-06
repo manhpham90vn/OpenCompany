@@ -1,6 +1,6 @@
-# [Tên dự án] - Growth Strategy
+# [Project Name] - Growth Strategy
 
-> Ngày: YYYY-MM-DD
+> Date: YYYY-MM-DD
 > Input: `../02-product-strategy/[file].md`
 > Status: draft | reviewed | executing
 
@@ -36,7 +36,7 @@
 - [ ]
 
 ## Pricing Presentation
-<!-- Cách communicate value và pricing -->
+<!-- How to communicate value and pricing -->
 - Landing page pricing:
 - Sales deck:
 - Case studies:

@@ -1,52 +1,52 @@
-# [Tên dự án] - Market Research
+# [Project Name] - Market Research
 
-> Ngày: YYYY-MM-DD
+> Date: YYYY-MM-DD
 > Researcher: AI (market-researcher skill)
 > Status: draft | reviewed | approved
 
 ## Executive Summary
-<!-- 2-3 câu tóm tắt cơ hội chính -->
+<!-- 2-3 sentences summarizing the main opportunity -->
 
-## Thị trường mục tiêu
+## Target Market
 
-### Quy mô & Tăng trưởng
+### Size & Growth
 - TAM (Total Addressable Market):
 - SAM (Serviceable Addressable Market):
 - SOM (Serviceable Obtainable Market):
 - CAGR:
 
-### Xu hướng chính
+### Key Trends
 1.
 2.
 3.
 
 ### Emerging Technologies
-<!-- Công nghệ mới đang thay đổi ngành -->
+<!-- New technologies changing the industry -->
 
 ## Competitor Landscape
 
 ### Direct Competitors
 
-| Competitor | Positioning | Pricing | Điểm mạnh | Điểm yếu | Market Share |
+| Competitor | Positioning | Pricing | Strengths | Weaknesses | Market Share |
 |-----------|------------|---------|-----------|----------|-------------|
 |           |            |         |           |          |             |
 
 ### Indirect Competitors & Alternatives
-<!-- Giải pháp thay thế: Excel, manual processes, in-house tools, etc. -->
+<!-- Alternative solutions: Excel, manual processes, in-house tools, etc. -->
 
-| Alternative | Cách dùng hiện tại | Limitations |
-|------------|-------------------|-------------|
-|            |                   |             |
+| Alternative | Current Usage | Limitations |
+|------------|--------------|-------------|
+|            |              |             |
 
 ### Competitor Gaps
-<!-- Những gì competitors chưa làm tốt hoặc chưa cover -->
+<!-- What competitors aren't doing well or haven't covered -->
 1.
 2.
 3.
 
-## Pain Points (xếp theo mức độ nghiêm trọng)
+## Pain Points (ranked by severity)
 
-1. **[Pain point 1]** - Mô tả, ai gặp, hiện tại giải quyết thế nào
+1. **[Pain point 1]** - Description, who experiences it, how it's currently solved
 2. **[Pain point 2]** -
 3. **[Pain point 3]** -
 
@@ -60,30 +60,30 @@
 
 ### User Segments
 
-| Segment | Đặc điểm | Pain points chính | Willingness to pay |
-|---------|----------|-------------------|-------------------|
-|         |          |                   |                   |
+| Segment | Characteristics | Key Pain Points | Willingness to Pay |
+|---------|----------------|-----------------|-------------------|
+|         |                |                 |                   |
 
-### Workflow hiện tại
-<!-- Mô tả workflow hiện tại của user, điểm friction ở đâu -->
+### Current Workflow
+<!-- Describe user's current workflow, where friction points are -->
 
 ## Market Timing
-- Tại sao BÂY GIỜ là thời điểm tốt để enter?
-- Đã có ai thử và fail chưa? Tại sao?
-- Tailwinds (yếu tố thuận lợi):
-- Headwinds (yếu tố bất lợi):
+- Why is NOW a good time to enter?
+- Has anyone tried and failed? Why?
+- Tailwinds (favorable factors):
+- Headwinds (unfavorable factors):
 
 ## Risk Factors
 
-| Risk | Mức độ (H/M/L) | Mitigation |
-|------|----------------|------------|
+| Risk | Severity (H/M/L) | Mitigation |
+|------|-------------------|------------|
 | Regulatory/Compliance |  |  |
 | Market saturation |  |  |
 | Technology shift |  |  |
 | Customer acquisition cost |  |  |
 
-## Cơ hội & Recommendations
-<!-- Đề xuất hướng đi dựa trên data -->
+## Opportunities & Recommendations
+<!-- Recommendations based on data -->
 
 ### Recommended Direction
 -
@@ -95,7 +95,7 @@
 -
 
 ## Assumptions & Limitations
-<!-- Liệt kê rõ ràng các assumptions đã đưa ra và data limitations -->
+<!-- Clearly list assumptions made and data limitations -->
 
 ## Sources & Data
-<!-- Links, reports, data sources - mỗi source ghi rõ năm -->
+<!-- Links, reports, data sources - specify year for each source -->

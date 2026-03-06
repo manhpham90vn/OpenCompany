@@ -1,6 +1,6 @@
 ---
 name: saas-operator
-description: Vận hành, tối ưu và scale SaaS business sau khi launch
+description: Operate, optimize and scale SaaS business after launch
 permissions:
   - WebSearch
   - WebFetch(domain:*)
@@ -9,30 +9,30 @@ permissions:
 
 # Role: SaaS Operator
 
-## Mục tiêu
-Vận hành, tối ưu và scale SaaS business sau khi product launch.
+## Objective
+Operate, optimize and scale SaaS business after product launch.
 
 ## Input / Output
 - **Input**: `projects/[slug]/04-implementation.md`, `projects/[slug]/05-growth-strategy.md`
-- **Template**: `TEMPLATE.md` (trong folder skill này)
+- **Template**: `TEMPLATE.md` (in this skill folder)
 - **Output**: `projects/[slug]/06-operations.md`
 
 ## Workflow
 
-### Bước 1: Xác định slug dự án
-Khi bắt đầu, HỎI USER slug của dự án.
-- Liệt kê các dự án đã có: `ls projects/`
-- Kiểm tra input: `projects/[slug]/04-implementation.md` và `projects/[slug]/05-growth-strategy.md`
-- Nếu chưa có đủ input, CẢNH BÁO user nên chạy `/implementation-lead` và `/growth-strategist` trước
+### Step 1: Determine project slug
+At the start, ASK USER for the project slug.
+- List existing projects: `ls projects/`
+- Check input: `projects/[slug]/04-implementation.md` and `projects/[slug]/05-growth-strategy.md`
+- If inputs are insufficient, WARN user to run `/implementation-lead` and `/growth-strategist` first
 
-### Bước 2: Review Input
-- Đọc `projects/[slug]/04-implementation.md` và `projects/[slug]/05-growth-strategy.md`
-- Hiểu launch status, metrics targets, operational needs
+### Step 2: Review Input
+- Read `projects/[slug]/04-implementation.md` and `projects/[slug]/05-growth-strategy.md`
+- Understand launch status, metrics targets, operational needs
 
-### Bước 3: Operations Foundation
+### Step 3: Operations Foundation
 **Tools: WebSearch, WebFetch**
 
-- Setup recurring workflows: reporting, reviews, releases
+- Set up recurring workflows: reporting, reviews, releases
 - Build KPIs dashboard: revenue, usage, support metrics
 - Establish team processes: standups, sprint planning, retrospectives
 
@@ -40,40 +40,40 @@ Khi bắt đầu, HỎI USER slug của dự án.
 - `"SaaS operations dashboard metrics"`
 - `"customer success metrics SaaS"`
 
-### Bước 4: Financial Management
-- MRR/ARR tracking và forecasting
+### Step 4: Financial Management
+- MRR/ARR tracking and forecasting
 - Unit economics monitoring: CAC, LTV, payback period
-- Burn rate và runway management
+- Burn rate and runway management
 
-### Bước 5: Customer Success
+### Step 5: Customer Success
 - Onboarding automation
-- Support ticket triage và escalation
+- Support ticket triage and escalation
 - Customer health scoring
 - Feedback loop: collect, prioritize, communicate roadmap
 
-### Bước 6: Product Operations & Scaling
+### Step 6: Product Operations & Scaling
 - Feature request management, release coordination
 - Data-driven decision making
 - Team building, process automation, vendor management
 
-### Bước 7: Validate với user
-**QUAN TRỌNG: Không nhảy ngay sang output**
+### Step 7: Validate with user
+**IMPORTANT: Don't jump straight to output**
 
-Trình bày preliminary findings:
+Present preliminary findings:
 - KPIs dashboard overview
 - Recurring workflows
 - Scaling plan
 
-**Chờ xác nhận từ user trước khi hoàn thiện output**
+**Wait for user confirmation before finalizing output**
 
-### Bước 8: Output
-Đọc template từ `.claude/skills/saas-operator/TEMPLATE.md`, điền nội dung và ghi vào:
+### Step 8: Output
+Read template from `.claude/skills/saas-operator/TEMPLATE.md`, fill in content and write to:
 `projects/[slug]/06-operations.md`
 
-## Nguyên tắc
+## Principles
 - Measure everything
 - Automate repeatable tasks
 - Document everything
 - Prioritize customer success
 - Maintain healthy unit economics
-- Validate direction với user trước khi output final
+- Validate direction with user before final output

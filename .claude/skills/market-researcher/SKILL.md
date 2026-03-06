@@ -1,6 +1,6 @@
 ---
 name: market-researcher
-description: Nghiên cứu thị trường, phân tích competitor, tìm pain points và cơ hội SaaS
+description: Market research, competitor analysis, finding pain points and SaaS opportunities
 
 # Permissions (auto-approved when skill is invoked)
 permissions:
@@ -11,85 +11,85 @@ permissions:
 
 # Role: Market Researcher
 
-## Mục tiêu
-Nghiên cứu thị trường để tìm ra cơ hội SaaS, pain points chưa được giải quyết, và xu hướng tiềm năng.
+## Objective
+Conduct market research to identify SaaS opportunities, unresolved pain points, and emerging trends.
 
 ## Input / Output
-- **Input**: Topic/idea từ user
-- **Template**: `TEMPLATE.md` (trong folder skill này)
+- **Input**: Topic/idea from user
+- **Template**: `TEMPLATE.md` (in this skill folder)
 - **Output**: `projects/[slug]/01-market-research.md`
 
 ## Workflow
 
-### Bước 1: Xác định slug dự án
-Khi bắt đầu, HỎI USER để xác định slug cho dự án này:
-- Slug là identifier ngắn gọn (ví dụ: `crm-freelancer`, `invoice-automation`, `team-chat`)
-- Slug sẽ dùng làm tên folder chứa tất cả output của dự án trong `projects/[slug]/`
+### Step 1: Determine project slug
+At the start, ASK USER to determine the slug for this project:
+- Slug is a short identifier (e.g., `crm-freelancer`, `invoice-automation`, `team-chat`)
+- Slug will be used as the folder name containing all project outputs in `projects/[slug]/`
 
-Sau khi có slug:
-- Tạo folder `projects/[slug]/` nếu chưa có
-- Kiểm tra files đã có: `ls projects/[slug]/ 2>/dev/null`
+After getting the slug:
+- Create folder `projects/[slug]/` if it doesn't exist
+- Check existing files: `ls projects/[slug]/ 2>/dev/null`
 
-### Bước 2: Nghiên cứu thị trường
+### Step 2: Market research
 **Tools: WebSearch, WebFetch**
 
-Phân tích thị trường target:
-- Quy mô thị trường (TAM/SAM/SOM), tốc độ tăng trưởng (CAGR)
-- Xu hướng chính và emerging technologies
-- Identify các market gaps - những gì đang thiếu trong thị trường hiện tại
+Analyze the target market:
+- Market size (TAM/SAM/SOM), growth rate (CAGR)
+- Key trends and emerging technologies
+- Identify market gaps - what's missing in the current market
 
-**Search patterns gợi ý:**
+**Suggested search patterns:**
 - `"[industry] market size 2025 2026 CAGR"`
 - `"[industry] trends challenges problems"`
 - `"[vertical] software market gaps"`
 
-**Nguồn data đáng tin cậy:**
+**Reliable data sources:**
 - Industry reports (Gartner, Forrester, McKinsey)
 - Statista, IBISWorld, Crunchbase
 - Industry blogs, podcasts, newsletters
-- Reddit, Hacker News (để hiểu pain points thực)
+- Reddit, Hacker News (to understand real pain points)
 
-### Bước 3: Competitor Analysis
-**Tools: WebSearch, WebFetch, gh (nếu là developer tools)**
+### Step 3: Competitor Analysis
+**Tools: WebSearch, WebFetch, gh (for developer tools)**
 
-- Map out landscape: ai đang làm gì, điểm mạnh/yếu của từng đối thủ
-- Phân tích pricing models, distribution channels, positioning
-- Tìm gaps mà đối thủ chưa cover
-- **Tối thiểu: analyze 5-10 competitors** (bao gồm cả indirect competitors)
+- Map out the landscape: who's doing what, strengths/weaknesses of each competitor
+- Analyze pricing models, distribution channels, positioning
+- Find gaps that competitors haven't covered
+- **Minimum: analyze 5-10 competitors** (including indirect competitors)
 
 **Search patterns:**
 - `"[industry] SaaS competitors alternatives"`
 - `"best [category] software [year]"`
 - `"[competitor name] pricing features review"`
 
-### Bước 4: User Research
+### Step 4: User Research
 **Tools: WebSearch, WebFetch**
 
-- Nghiên cứu pain points của target users
-- Tìm hiểu workflow hiện tại, điểm friction
+- Research target user pain points
+- Understand current workflows, friction points
 - Identify underserved segments
-- Tìm feedback từ users trên G2, Capterra, TrustRadius, Reddit
+- Find user feedback on G2, Capterra, TrustRadius, Reddit
 
-### Bước 5: Validate sơ bộ với user
-**QUAN TRỌNG: Không nhảy ngay sang output**
+### Step 5: Preliminary validation with user
+**IMPORTANT: Don't jump straight to output**
 
-Trình bày preliminary findings:
-- 3-5 pain points tiềm năng nhất
-- 2-3 competitor gaps có thể khai thác
-- Market timing assessment (nên enter không?)
+Present preliminary findings:
+- Top 3-5 potential pain points
+- 2-3 exploitable competitor gaps
+- Market timing assessment (should we enter or not?)
 
-**Chờ xác nhận từ user trước khi hoàn thiện output**
+**Wait for user confirmation before finalizing output**
 
-### Bước 6: Output
-Đọc template từ `.claude/skills/market-researcher/TEMPLATE.md`, điền nội dung và ghi vào:
+### Step 6: Output
+Read template from `.claude/skills/market-researcher/TEMPLATE.md`, fill in content and write to:
 `projects/[slug]/01-market-research.md`
 
 ---
 
-## Nguyên tắc
-- **Luôn đưa data, không phải opinions**
-- **Tìm ít nhất 3 nguồn để cross-verify** trước khi claim data point nào đó
-- **Focus vào actionable insights**, không phải báo cáo dài
-- **Nếu thiếu data, state rõ ràng là assumption** ( VD: "Assumption: market size ~$X based on...")
-- **Data không cũ hơn 2 năm** - nếu chỉ có old data, note rõ
-- **Validate direction với user** trước khi output final
+## Principles
+- **Always provide data, not opinions**
+- **Find at least 3 sources to cross-verify** before claiming any data point
+- **Focus on actionable insights**, not lengthy reports
+- **If data is missing, clearly state it as an assumption** (e.g., "Assumption: market size ~$X based on...")
+- **Data no older than 2 years** - if only old data is available, note it clearly
+- **Validate direction with user** before final output

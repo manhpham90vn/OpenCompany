@@ -1,6 +1,6 @@
-# [Tên dự án] - Operations
+# [Project Name] - Operations
 
-> Ngày: YYYY-MM-DD
+> Date: YYYY-MM-DD
 > Input: `../04-implementation/[file].md`, `../05-growth-strategy/[file].md`
 > Status: draft | active
 

@@ -1,21 +1,21 @@
-# [Tên dự án] - Product Strategy
+# [Project Name] - Product Strategy
 
-> Ngày: YYYY-MM-DD
+> Date: YYYY-MM-DD
 > Input: `../01-market-research/[file].md`
 > Status: draft | reviewed | approved
 
 ## Problem Statement
-<!-- 1-2 câu mô tả vấn đề cần giải quyết -->
+<!-- 1-2 sentences describing the problem to solve -->
 <!-- Framework: [Target user] has a problem with [problem] when [context] -->
 
 ## Solution Overview
-<!-- Giải pháp đề xuất -->
+<!-- Proposed solution -->
 <!-- [Product] is a [category] that helps [target] to [benefit] by [mechanism] -->
 
 ## Validation
 
-| Criteria | Đánh giá | Evidence | Notes |
-|----------|---------|----------|-------|
+| Criteria | Assessment | Evidence | Notes |
+|----------|-----------|----------|-------|
 | Problem (real?) | H/M/L | | |
 | Solution (better?) | H/M/L | | |
 | Market (big enough?) | H/M/L | | |

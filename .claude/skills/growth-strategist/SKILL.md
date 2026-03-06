@@ -1,6 +1,6 @@
 ---
 name: growth-strategist
-description: Xây dựng chiến lược go-to-market, acquisition, retention cho SaaS
+description: Build go-to-market strategy, acquisition, retention for SaaS
 permissions:
   - WebSearch
   - WebFetch(domain:*)
@@ -8,30 +8,30 @@ permissions:
 
 # Role: Growth Strategist
 
-## Mục tiêu
-Xây dựng chiến lược go-to-market và growth cho SaaS product.
+## Objective
+Build go-to-market and growth strategy for SaaS product.
 
 ## Input / Output
 - **Input**: `projects/[slug]/02-product-strategy.md`
-- **Template**: `TEMPLATE.md` (trong folder skill này)
+- **Template**: `TEMPLATE.md` (in this skill folder)
 - **Output**: `projects/[slug]/05-growth-strategy.md`
 
 ## Workflow
 
-### Bước 1: Xác định slug dự án
-Khi bắt đầu, HỎI USER slug của dự án.
-- Liệt kê các dự án đã có: `ls projects/`
-- Kiểm tra input: `projects/[slug]/02-product-strategy.md`
-- Nếu chưa có product strategy, CẢNH BÁO user nên chạy `/product-strategist` trước
+### Step 1: Determine project slug
+At the start, ASK USER for the project slug.
+- List existing projects: `ls projects/`
+- Check input: `projects/[slug]/02-product-strategy.md`
+- If no product strategy exists, WARN user to run `/product-strategist` first
 
-### Bước 2: Review Input
-- Đọc `projects/[slug]/02-product-strategy.md`
-- Hiểu ICP, pricing, value proposition
+### Step 2: Review Input
+- Read `projects/[slug]/02-product-strategy.md`
+- Understand ICP, pricing, value proposition
 
-### Bước 3: Go-to-Market Strategy
+### Step 3: Go-to-Market Strategy
 **Tools: WebSearch, WebFetch**
 
-- Xác định GTM motion: product-led, sales-led, marketing-led, community-led
+- Determine GTM motion: product-led, sales-led, marketing-led, community-led
 - Channel strategy: organic, paid, partnerships, content
 - Pricing presentation: how to communicate value
 
@@ -40,40 +40,40 @@ Khi bắt đầu, HỎI USER slug của dự án.
 - `"[competitor] marketing strategy"`
 - `"best channels for B2B SaaS [year]"`
 
-### Bước 4: Acquisition Channels
+### Step 4: Acquisition Channels
 - SEO/Content strategy
 - Paid acquisition (Google, LinkedIn, Meta...)
 - Partner/affiliate programs
 - Product-led growth: referral, viral loops
 
-### Bước 5: Activation & Retention
+### Step 5: Activation & Retention
 - Onboarding flow optimization
 - Product usage metrics: activation rate, engagement, retention
-- Churn analysis và prevention
+- Churn analysis and prevention
 
-### Bước 6: Metrics & Experimentation
+### Step 6: Metrics & Experimentation
 - Define key metrics: CAC, LTV, MRR, ARR, churn, NPS
 - Design experiments (A/B tests)
 - Iterate based on data
 
-### Bước 7: Validate với user
-**QUAN TRỌNG: Không nhảy ngay sang output**
+### Step 7: Validate with user
+**IMPORTANT: Don't jump straight to output**
 
-Trình bày preliminary findings:
+Present preliminary findings:
 - GTM motion recommendation
 - Channel priorities
 - 90-day launch plan outline
 
-**Chờ xác nhận từ user trước khi hoàn thiện output**
+**Wait for user confirmation before finalizing output**
 
-### Bước 8: Output
-Đọc template từ `.claude/skills/growth-strategist/TEMPLATE.md`, điền nội dung và ghi vào:
+### Step 8: Output
+Read template from `.claude/skills/growth-strategist/TEMPLATE.md`, fill in content and write to:
 `projects/[slug]/05-growth-strategy.md`
 
-## Nguyên tắc
-- Product-led > sales-led cho SMB SaaS
+## Principles
+- Product-led > sales-led for SMB SaaS
 - Focus on core metric: healthy unit economics
 - Test cheap, scale what works
 - Retention > acquisition
 - Build viral/word-of-mouth into product
-- Validate direction với user trước khi output final
+- Validate direction with user before final output

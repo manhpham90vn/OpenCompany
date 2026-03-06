@@ -1,6 +1,6 @@
-# [Tên dự án] - Implementation Plan
+# [Project Name] - Implementation Plan
 
-> Ngày: YYYY-MM-DD
+> Date: YYYY-MM-DD
 > Input: `../03-technical-architecture.md`
 > Status: draft | in-progress | launched
 
@@ -31,12 +31,12 @@
 
 ## Sprint Plan
 
-### Sprint 1 - [Mục tiêu]
+### Sprint 1 - [Goal]
 | Task | Priority | Status | Assignee | Notes |
 |------|----------|--------|----------|-------|
 | | P0 | | | |
 
-### Sprint 2 - [Mục tiêu]
+### Sprint 2 - [Goal]
 | Task | Priority | Status | Assignee | Notes |
 |------|----------|--------|----------|-------|
 | | P0 | | | |

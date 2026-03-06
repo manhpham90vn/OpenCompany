@@ -1,12 +1,12 @@
-# [Tên dự án] - Technical Architecture
+# [Project Name] - Technical Architecture
 
-> Ngày: YYYY-MM-DD
+> Date: YYYY-MM-DD
 > Input: `../02-product-strategy/[file].md`
 > Status: draft | reviewed | approved
 
 ## Tech Stack
 
-| Layer | Choice | Lý do | Alternatives Considered |
+| Layer | Choice | Rationale | Alternatives Considered |
 |-------|--------|-------|----------------------|
 | Frontend | | | |
 | Backend | | | |
@@ -19,14 +19,14 @@
 
 ## System Architecture
 
-<!-- Mô tả kiến trúc tổng quan, có thể dùng ASCII diagram -->
+<!-- Describe overall architecture, can use ASCII diagram -->
 
 ```
 [Client] --> [API Gateway] --> [Services] --> [Database]
 ```
 
 ### Architecture Diagram
-<!-- Vẽ diagram chi tiết hơn nếu cần -->
+<!-- Draw more detailed diagram if needed -->
 
 ## Data Models
 
@@ -37,7 +37,7 @@
 | | | |
 
 ### Database Schema
-<!-- Chi tiết hơn về tables, indexes -->
+<!-- More details about tables, indexes -->
 
 ## API Design
 
@@ -53,7 +53,7 @@
 
 ## Third-party Integrations
 
-| Service | Mục đích | Cost estimate | Setup effort |
+| Service | Purpose | Cost Estimate | Setup Effort |
 |---------|---------|---------------|--------------|
 | | | $ | |
 
