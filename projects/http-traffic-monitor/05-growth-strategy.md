@@ -7,75 +7,75 @@
 ## GTM Motion
 
 - **Primary:** [x] Product-led [ ] Sales-led [ ] Marketing-led [ ] Community-led
-- **Rationale:** FlowProxy là free desktop tool cho developers — không cần sales team. Product-led với mục tiêu user tự discover, tự install, và tự trở thành advocates. Distribution chủ yếu qua GitHub, Hacker News, Reddit — nơi developers tìm kiếm tools. Freemium model (free core + Pro paid) phù hợp với hành vi developer: dùng thử miễn phí, upgrade khi cần tính năng mạnh hơn.
+- **Rationale:** FlowProxy is a free desktop tool for developers — no sales team needed. Product-led with goal of users self-discovering, self-installing, and becoming advocates. Distribution mainly through GitHub, Hacker News, Reddit — where developers look for tools. Freemium model (free core + Pro paid) fits developer behavior: try for free, upgrade when needing more powerful features.
 
 ## Channels
 
 | Channel | Strategy | Expected CAC | Priority | Status |
 |---------|----------|-------------|----------|--------|
-| GitHub | Optimize README với demo GIF, keywords "free alternative to Charles/Fiddler", submit vào awesome-lists | $0-2 | P0 | |
-| Hacker News | Post Show HN với demo trực quan, giải quyết vấn đề rõ ràng | $0-2 | P0 | |
-| SEO (Google) | Tạo comparison pages: /vs-charles, /vs-fiddler, /vs-proxyman; target long-tail keywords | $1-3 | P0 | |
-| Reddit | Post trong r/webdev, r/QualityAssurance, r/programming — chia sẻ "I built this" không phải quảng cáo | $1-5 | P1 | |
-| Product Hunt | Launch day spike, kết hợp với Twitter/X buzz | $2-5 | P1 | |
-| SEA/India communities | Viblo.asia, dev groups trên Facebook/Telegram Vietnam, Indonesia, India | $1-3 | P1 | |
-| Content/Blog | Viết "how-to" articles, debugging tutorials, comparison posts trên Dev.to, Hashnode | $2-5 | P2 | |
-| Paid ads | Chưa cần — để test organic channels trước | N/A | P2 | |
+| GitHub | Optimize README with demo GIF, keywords "free alternative to Charles/Fiddler", submit to awesome-lists | $0-2 | P0 | |
+| Hacker News | Post Show HN with visual demo, clearly solving a problem | $0-2 | P0 | |
+| SEO (Google) | Create comparison pages: /vs-charles, /vs-fiddler, /vs-proxyman; target long-tail keywords | $1-3 | P0 | |
+| Reddit | Post in r/webdev, r/QualityAssurance, r/programming — share "I built this" not ads | $1-5 | P1 | |
+| Product Hunt | Launch day spike, combined with Twitter/X buzz | $2-5 | P1 | |
+| SEA/India communities | Viblo.asia, dev groups on Facebook/Telegram Vietnam, Indonesia, India | $1-3 | P1 | |
+| Content/Blog | Write "how-to" articles, debugging tutorials, comparison posts on Dev.to, Hashnode | $2-5 | P2 | |
+| Paid ads | Not needed yet — test organic channels first | N/A | P2 | |
 
 ## Launch Plan (First 90 days)
 
 ### Day 1-30: Foundation
 
 - [ ] **GitHub repo polish:**
-  - Viết README chi tiết với feature comparison table (vs Charles, Fiddler, Proxyman, mitmproxy)
-  - Thêm demo GIF/video showing one-click SSL setup và traffic inspection
+  - Write detailed README with feature comparison table (vs Charles, Fiddler, Proxyman, mitmproxy)
+  - Add demo GIF/video showing one-click SSL setup and traffic inspection
   - Include badges: Downloads, GitHub stars, License, Platforms supported
-  - Viết CONTRIBUTING.md để invite community contributions
+  - Write CONTRIBUTING.md to invite community contributions
 - [ ] **Pre-launch warmup:**
-  - Đăng ký Twitter/X account, bắt đầu tweet về development progress
-  - Tạo landing page đơn giản: flowproxy.io với download links
-  - Submit vào các "awesome" GitHub lists: awesome-proxy, awesome-debugging, awesome-developer-tools
+  - Register Twitter/X account, start tweeting about development progress
+  - Create simple landing page: flowproxy.io with download links
+  - Submit to "awesome" GitHub lists: awesome-proxy, awesome-debugging, awesome-developer-tools
 - [ ] **Soft launch:**
-  - Post trong private dev communities (Discord groups, Telegram) để gather early feedback
-  - Offer "founder's badge" hoặc recognition cho early adopters
+  - Post in private dev communities (Discord groups, Telegram) to gather early feedback
+  - Offer "founder's badge" or recognition for early adopters
 
 ### Day 31-60: Activate Channels
 
 - [ ] **Hacker News Show HN:**
-  - Post vào Tuesday–Thursday, 8-10am ET (best timing)
-  - Title rõ ràng: "FlowProxy: Free HTTP Debugger with Built-in Ad Blocking"
-  - Include live demo link hoặc GIF trong comments
-  - Prepare để answer questions trong thread
+  - Post on Tuesday–Thursday, 8-10am ET (best timing)
+  - Clear title: "FlowProxy: Free HTTP Debugger with Built-in Ad Blocking"
+  - Include live demo link or GIF in comments
+  - Prepare to answer questions in thread
 - [ ] **Product Hunt launch:**
-  - Submit 1 tuần trước, prepare assets: screenshots, tagline, maker comment
-  - Notify early users để upvote trong first 2 hours
-  - Aim cho Top 5 của ngày
+  - Submit 1 week before, prepare assets: screenshots, tagline, maker comment
+  - Notify early users to upvote in first 2 hours
+  - Aim for Top 5 of the day
 - [ ] **Reddit posts:**
   - r/webdev: "I built a free alternative to Charles Proxy — would love feedback"
-  - r/QualityAssurance: "Free tool để debug HTTP traffic without the noise"
-  - r/programming: Chia sẻ nếu relevant
-  - Key: Be genuine, không spam, answer questions honestly
+  - r/QualityAssurance: "Free tool to debug HTTP traffic without the noise"
+  - r/programming: Share if relevant
+  - Key: Be genuine, don't spam, answer questions honestly
 - [ ] **SEO pages:**
-  - Tạo landing pages: flowproxy.io/vs-charles, flowproxy.io/vs-fiddler
-  - Include honest comparison: pros/cons của mỗi tool
+  - Create landing pages: flowproxy.io/vs-charles, flowproxy.io/vs-fiddler
+  - Include honest comparison: pros/cons of each tool
   - Target keywords: "free charles proxy alternative", "fiddler alternative linux", "http debugger mac free"
 
 ### Day 61-90: Scale
 
 - [ ] **Community building:**
-  - Tạo Discord server cho users
+  - Create Discord server for users
   - Start newsletter (monthly updates, tips & tricks)
-  - Encourage users viết blog posts / tutorials về FlowProxy
+  - Encourage users to write blog posts / tutorials about FlowProxy
 - [ ] **SEO content:**
-  - Viết blog posts: "How to debug HTTPS traffic on macOS for free", "Beginner's guide to HTTP debugging"
-  - Post trên Dev.to, Hashnode với proper SEO keywords
-  - Target long-tail queries developers search khi có vấn đề
+  - Write blog posts: "How to debug HTTPS traffic on macOS for free", "Beginner's guide to HTTP debugging"
+  - Post on Dev.to, Hashnode with proper SEO keywords
+  - Target long-tail queries developers search when having problems
 - [ ] **SEA/India expansion:**
-  - Post trên Viblo.asia (Vietnam dev community)
-  - Reach out to dev bloggers/YouTubers trong Vietnam, Indonesia, India
-  - Translate key docs sang tiếng Việt, Bahasa Indonesia
+  - Post on Viblo.asia (Vietnam dev community)
+  - Reach out to dev bloggers/YouTubers in Vietnam, Indonesia, India
+  - Translate key docs into Vietnamese, Bahasa Indonesia
 - [ ] **Collect testimonials:**
-  - Ask users cho quotes sau khi họ dùng 2-4 tuần
+  - Ask users for quotes after they use for 2-4 weeks
   - Feature users on website, GitHub README
   - Build social proof before scaling paid channels
 
@@ -83,178 +83,178 @@
 
 ### Landing page pricing
 
-- **Free tier:** Hiển thị đầu tiên với tagline "100% Free — No License, No Expiry"
-- **Pro tier ($49/năm):** Show value với clear feature comparison
-- **Enterprise:** "Contact for team pricing" — don't hide, nhưng cũng đừng emphasize
+- **Free tier:** Display first with tagline "100% Free — No License, No Expiry"
+- **Pro tier ($49/year):** Show value with clear feature comparison
+- **Enterprise:** "Contact for team pricing" — don't hide, but don't emphasize either
 
 ### Key messaging
 
 - **Primary:** "The free HTTP debugger for developers who don't want to pay $90"
 - **Secondary:** "Cross-platform. No license. No expiry. Built for everyone."
-- **Emerging markets angle:** "Dev tools shouldn't cost USD prices" — resonate với SEA/India developers
+- **Emerging markets angle:** "Dev tools shouldn't cost USD prices" — resonate with SEA/India developers
 
 ### Comparison pages
 
-- Tạo trang so sánh công khai: flowproxy.io/compare
-- Include honest assessment: FlowProxy không có tất cả features của Charles/Proxyman, nhưng miễn phí và đủ dùng
+- Create public comparison page: flowproxy.io/compare
+- Include honest assessment: FlowProxy doesn't have all features of Charles/Proxyman, but it's free and sufficient
 - Focus on use cases: "If you need X, use Charles. If you need Y, FlowProxy is enough."
 
 ### Case studies
 
-- Thu thập testimonials từ early users
-- Viết blog post: "How [developer] replaced Charles Proxy with FlowProxy"
-- Include metrics where possible: "Saved $90/year", "Setup trong 3 phút thay vì 15 phút"
+- Collect testimonials from early users
+- Write blog post: "How [developer] replaced Charles Proxy with FlowProxy"
+- Include metrics where possible: "Saved $90/year", "Setup in 3 minutes instead of 15 minutes"
 
 ## Activation & Onboarding
 
 ### First-value moment
 
-**Aha moment:** User nhìn thấy HTTP requests đầu tiên của họ trong FlowProxy — có thể là traffic từ browser hoặc app đang develop.
+**Aha moment:** User sees their first HTTP requests in FlowProxy — could be traffic from browser or app being developed.
 
 ### Time to value target
 
-**Dưới 3 phút** từ lần install đầu tiên đến khi thấy request đầu tiên.
+**Under 3 minutes** from first install to seeing the first request.
 
 ### Onboarding steps
 
 1. **Launch app → Auto-start proxy**
-   - App tự động start proxy server khi mở
-   - Show instructions rõ ràng: "Proxy running on localhost:8080"
+   - App auto-starts proxy server when opened
+   - Show clear instructions: "Proxy running on localhost:8080"
 
 2. **One-click SSL certificate**
-   - Detect OS, hướng dẫn install certificate tương ứng
-   - Button "Install Certificate" với step-by-step cho từng OS
-   - Verify automatic sau khi install
+   - Detect OS, guide to install certificate accordingly
+   - Button "Install Certificate" with step-by-step for each OS
+   - Verify automatically after install
 
 3. **Show live traffic immediately**
-   - Mở browser/app → thấy requests hiện lên trong UI
-   - Nếu chưa có traffic: hiển thị "Waiting for traffic..." với visual cues
+   - Open browser/app → see requests appear in UI
+   - If no traffic yet: show "Waiting for traffic..." with visual cues
    - Sample/demo mode: "Click here to see sample requests"
 
 4. **Quick tutorial overlay (optional)**
-   - 3 bước: "1. Install cert → 2. Open your app → 3. See traffic"
+   - 3 steps: "1. Install cert → 2. Open your app → 3. See traffic"
    - "Don't show again" option
-   - Tooltips cho feature chính: filter, search, block ads
+   - Tooltips for main features: filter, search, block ads
 
 ### Activation metric
 
-**Definition:** User thấy ít nhất 1 HTTP request trong FlowProxy UI trong vòng 10 phút sau install.
+**Definition:** User sees at least 1 HTTP request in FlowProxy UI within 10 minutes of install.
 
-**Target:** >70% activation rate cho new installs.
+**Target:** >70% activation rate for new installs.
 
 ### Retention triggers
 
 - **In-app notifications:** "Tip: Use Cmd+F to filter requests"
-- **Changelog popup:** Show new features khi update version
-- **Empty state:** Không để trống — luôn có gợi ý hành động
+- **Changelog popup:** Show new features when updating version
+- **Empty state:** Never leave empty — always have action suggestions
 
 ## Retention
 
 ### Key retention metric
 
 - **DAU/MAU ratio:** Target >30% (developers tend to open when debugging)
-- **Weekly active users:** Target >40% của total users
-- **Month 1 retention:** >50% users quay lại sau tuần đầu
+- **Weekly active users:** Target >40% of total users
+- **Month 1 retention:** >50% users return after first week
 
 ### Churn prevention
 
 #### Early warning signals
 
-- User không activate (>10 phút không có request)
-- User install nhưng không complete SSL setup
-- User không quay lại sau 14 ngày
+- User not activated (>10 minutes with no requests)
+- User installed but didn't complete SSL setup
+- User didn't return after 14 days
 
 #### Intervention playbook
 
-- **Day 3:** Nếu chưa activate, gửi email với quick start guide
-- **Day 7:** Follow-up với common issues FAQ
-- **Day 14:** "We miss you" email với new features added
+- **Day 3:** If not activated, send email with quick start guide
+- **Day 7:** Follow-up with common issues FAQ
+- **Day 14:** "We miss you" email with new features added
 - **Day 30:** Re-engagement: "FlowProxy v1.1 is out — try these new features"
 
 #### Engagement loops
 
-- **Referral program:** "Invite a friend, both get Pro features for 1 month" (test sau khi có Pro tier)
-- **GitHub stars:** Encourage users star repo, tạo FOMO
+- **Referral program:** "Invite a friend, both get Pro features for 1 month" (test after Pro tier exists)
+- **GitHub stars:** Encourage users to star repo, create FOMO
 - **Community:** Discord/Telegram community where users help each other
 
 ## Metrics Framework
 
 | Metric | Definition | Target | Current | Status |
 |--------|-----------|--------|---------|--------|
-| MRR | Monthly Recurring Revenue từ Pro ($49/năm) + Enterprise | $4,000 by Month 6 | 0 | |
+| MRR | Monthly Recurring Revenue from Pro ($49/year) + Enterprise | $4,000 by Month 6 | 0 | |
 | ARR | Annual Recurring Revenue | $50,000 by Year 1 | 0 | |
-| CAC | Chi phí acquire 1 paid user (organic = $0-5) | <$10 | N/A | |
-| LTV | Lifetime value của Pro user (49 * 2 years) | ~$98 | N/A | |
+| CAC | Cost to acquire 1 paid user (organic = $0-5) | <$10 | N/A | |
+| LTV | Lifetime value of Pro user (49 * 2 years) | ~$98 | N/A | |
 | LTV:CAC | | >10:1 | N/A | |
-| Payback period | | <1 tháng | N/A | |
-| Churn (revenue) | | <5%/tháng | N/A | |
-| Churn (customer) | | <3%/tháng | N/A | |
+| Payback period | | <1 month | N/A | |
+| Churn (revenue) | | <5%/month | N/A | |
+| Churn (customer) | | <3%/month | N/A | |
 | NPS | Net Promoter Score | >50 | N/A | |
 | GitHub Stars | | 1,000 by Month 3 | 0 | |
 | Downloads/week | | 500 by Month 2 | 0 | |
-| Activation rate | Users thấy request đầu tiên trong 10 phút | >70% | N/A | |
+| Activation rate | Users see first request within 10 minutes | >70% | N/A | |
 | Free→Pro conversion | % free users upgrade to Pro | 3-5% | N/A | |
 
 ## Experiments Backlog
 
 | Experiment | Hypothesis | Metric | Status | Result |
 |-----------|-----------|--------|--------|--------|
-| Show HN launch | Post sẽ reach front page, drive 1K+ visitors và 100+ GitHub stars | GitHub stars, website visits | planned | |
-| Reddit post (r/webdev) | Post sẽ generate interest từ developers đang dùng Charles/Fiddler | Upvotes, comments, downloads | planned | |
-| SEO comparison page | /vs-charles page sẽ rank top 5 cho "charles proxy alternative" query | Organic traffic, conversions | planned | |
-| Referral program | Users sẽ invite colleagues nếu có incentive | Referrals, conversions | planned | |
-| In-app upgrade prompt | Prompt upgrade sau 50 requests sẽ increase conversion | Pro signups | planned | |
-| Newsletter | Monthly newsletter sẽ increase retention | Week 2, 4 retention | planned | |
+| Show HN launch | Post will reach front page, drive 1K+ visitors and 100+ GitHub stars | GitHub stars, website visits | planned | |
+| Reddit post (r/webdev) | Post will generate interest from developers using Charles/Fiddler | Upvotes, comments, downloads | planned | |
+| SEO comparison page | /vs-charles page will rank top 5 for "charles proxy alternative" query | Organic traffic, conversions | planned | |
+| Referral program | Users will invite colleagues if there's an incentive | Referrals, conversions | planned | |
+| In-app upgrade prompt | Prompt upgrade after 50 requests will increase conversion | Pro signups | planned | |
+| Newsletter | Monthly newsletter will increase retention | Week 2, 4 retention | planned | |
 
 ## Competitive Positioning in GTM
 
 ### vs Charles Proxy
 
-- **Charles:** $50-90 one-time, macOS-focused, mature nhưng UI cũ
-- **FlowProxy:** Miễn phí, cross-platform, modern UI
+- **Charles:** $50-90 one-time, macOS-focused, mature but old UI
+- **FlowProxy:** Free, cross-platform, modern UI
 - **Positioning:** "Charles is great — but you shouldn't have to pay $90 just to debug HTTP traffic"
 
 ### vs Proxyman
 
 - **Proxyman:** $89 one-time, modern UI, ~350K users
-- **FlowProxy:** Miễn phí, có built-in ad-blocking
+- **FlowProxy:** Free, has built-in ad-blocking
 - **Positioning:** "Proxyman is beautiful — FlowProxy is free and blocks ads automatically"
 
 ### vs mitmproxy
 
-- **mitmproxy:** Free, CLI-only, powerful nhưng steep learning curve
-- **FlowProxy:** GUI wrapper around mitmproxy-like functionality, dễ dùng hơn
+- **mitmproxy:** Free, CLI-only, powerful but steep learning curve
+- **FlowProxy:** GUI wrapper around mitmproxy-like functionality, easier to use
 - **Positioning:** "All the power of mitmproxy — with a UI that doesn't require a manual"
 
 ### vs Fiddler
 
-- **Fiddler:** $90/năm, Windows-heavy, enterprise-focused
-- **FlowProxy:** Miễn phí, developer-first, cross-platform
+- **Fiddler:** $90/year, Windows-heavy, enterprise-focused
+- **FlowProxy:** Free, developer-first, cross-platform
 - **Positioning:** "Fiddler's features — free, forever, for individual developers"
 
 ### Differentiation in messaging
 
-- **Free ≠ inferior:** Emphasize "miễn phí vì tin rằng developers ở mọi nơi đều xứng đáng có tool tốt"
-- **Emerging markets angle:** Không nói thẳng "cho người nghèo" — nói "dev tools không nên có USD price tag cho developers ở mọi nơi"
-- **Privacy angle:** "Your traffic stays on your machine" — differentiate với cloud-based tools
-- **Speed angle:** "Setup trong 3 phút" vs "Charles mất 15 phút setup"
+- **Free ≠ inferior:** Emphasize "free because we believe developers everywhere deserve good tools"
+- **Emerging markets angle:** Don't say "for poor people" — say "dev tools shouldn't have USD price tags for developers everywhere"
+- **Privacy angle:** "Your traffic stays on your machine" — differentiate from cloud-based tools
+- **Speed angle:** "Setup in 3 minutes" vs "Charles takes 15 minutes to set up"
 
 ## Risk Mitigation
 
 | Risk | Mitigation |
 |------|-----------|
-| Low download/install volume | Tập trung vào GitHub + HN launch, optimize SEO từ day 1 |
-| Low conversion to Pro | Test different Pro features, survey users về what they'd pay for |
+| Low download/install volume | Focus on GitHub + HN launch, optimize SEO from day 1 |
+| Low conversion to Pro | Test different Pro features, survey users about what they'd pay for |
 | Competitor (mitmproxy) launches GUI | Ship fast, build community first, focus on UX differentiation |
 | Negative reviews | Respond quickly, fix bugs fast, be transparent about limitations |
 | Churn high | Focus on onboarding, send re-engagement emails, build community |
 
 ## Next 90 Days Focus
 
-1. **Ship MVP** — không có gì quan trọng hơn việc product hoạt động tốt
-2. **Get first 100 users** — qua GitHub, HN, Reddit
+1. **Ship MVP** — nothing matters more than the product working well
+2. **Get first 100 users** — through GitHub, HN, Reddit
 3. **Collect feedback** — understand why users stay vs leave
-4. **Optimize onboarding** — reduce time-to-value dưới 3 phút
+4. **Optimize onboarding** — reduce time-to-value under 3 minutes
 5. **Build community** — Discord/Telegram, newsletter
 
-> Growth cho developer tools là marathon, không phải sprint. 90 ngày đầu: validate product-market fit, build initial user base, establish community. Scale channels sau khi có proof.
+> Growth for developer tools is a marathon, not a sprint. First 90 days: validate product-market fit, build initial user base, establish community. Scale channels after having proof.

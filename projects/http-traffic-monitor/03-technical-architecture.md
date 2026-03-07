@@ -8,17 +8,17 @@
 
 | Layer | Choice | Rationale | Alternatives Considered |
 |-------|--------|-----------|------------------------|
-| Desktop framework | Tauri 2.x | Bundle ~10MB vs Electron ~100MB; Rust backend lý tưởng cho proxy | Electron (Node.js) — dễ hơn nhưng nặng và chậm hơn |
-| Frontend | React 18 + TypeScript + Vite | Ecosystem lớn, dev loop nhanh, virtual list tốt cho 1000+ requests | Vue 3 — tương đương nhưng ít tài nguyên hơn |
-| UI components | shadcn/ui + Tailwind CSS | Build nhanh, modern, không license phức tạp | Ant Design — nặng hơn, không cần thiết |
-| State management | Zustand | Nhẹ, không boilerplate, đủ cho desktop app | Redux — over-engineer cho scope này |
-| Proxy core | hyper + tokio + rustls | Async HTTP chuẩn công nghiệp trong Rust | reqwest — wrapper, ít control hơn |
-| MITM / SSL interception | hudsucker | Thư viện MITM proxy chuyên dụng cho Rust | mitmproxy-rs — ít tài liệu hơn |
-| Certificate generation | rcgen | Pure Rust, tạo CA cert không cần OpenSSL | openssl crate — dependency nặng |
-| Ad blocking engine | adblock-rs (Brave) | Parse EasyList/uBlock format native | Tự implement — tốn thời gian không cần thiết |
-| Local storage | SQLite via sqlx | Embedded, zero-config, nhanh cho traffic log | sled — ít mature hơn cho relational data |
-| Packaging | Tauri bundler + GitHub Actions | Cross-platform build tự động (.msi, .dmg, .AppImage) | — |
-| Auto-update | Tauri updater | Built-in, không cần server riêng | Squirrel — chỉ cho Electron |
+| Desktop framework | Tauri 2.x | ~10MB bundle vs Electron ~100MB; Rust backend ideal for proxy | Electron (Node.js) — easier but heavier and slower |
+| Frontend | React 18 + TypeScript + Vite | Large ecosystem, fast dev loop, virtual list great for 1000+ requests | Vue 3 — comparable but less resources |
+| UI components | shadcn/ui + Tailwind CSS | Fast build, modern, no complex licensing | Ant Design — heavier, not needed |
+| State management | Zustand | Lightweight, no boilerplate, sufficient for desktop app | Redux — over-engineered for this scope |
+| Proxy core | hyper + tokio + rustls | Industry-standard async HTTP in Rust | reqwest — wrapper, less control |
+| MITM / SSL interception | hudsucker | Dedicated MITM proxy library for Rust | mitmproxy-rs — less documented |
+| Certificate generation | rcgen | Pure Rust, generate CA cert without OpenSSL | openssl crate — heavy dependency |
+| Ad blocking engine | adblock-rs (Brave) | Parse EasyList/uBlock format natively | Self-implement — unnecessary time sink |
+| Local storage | SQLite via sqlx | Embedded, zero-config, fast for traffic log | sled — less mature for relational data |
+| Packaging | Tauri bundler + GitHub Actions | Automatic cross-platform builds (.msi, .dmg, .AppImage) | — |
+| Auto-update | Tauri updater | Built-in, no separate server needed | Squirrel — Electron only |
 
 ## System Architecture
 
@@ -59,11 +59,11 @@
 
 ### Core Data Flow
 
-1. App khởi động → Rust proxy server bind `localhost:8080`
-2. App set OS system proxy → `localhost:8080` (platform-specific API)
-3. Traffic từ mọi app → Proxy → adblock-rs check → forward hoặc block
-4. Mỗi request lưu vào SQLite → emit Tauri event → frontend cập nhật real-time
-5. App đóng → system proxy restore về cài đặt gốc
+1. App starts → Rust proxy server binds to `localhost:8080`
+2. App sets OS system proxy → `localhost:8080` (platform-specific API)
+3. Traffic from all apps → Proxy → adblock-rs check → forward or block
+4. Each request saved to SQLite → emit Tauri event → frontend updates in real-time
+5. App closes → system proxy restored to original settings
 
 ## Data Models
 
@@ -114,53 +114,53 @@ CREATE TABLE filter_rules (
   created_at INTEGER NOT NULL
 );
 
--- Indexes cho filter/search nhanh
+-- Indexes for fast filter/search
 CREATE INDEX idx_requests_session ON requests(session_id);
 CREATE INDEX idx_requests_host ON requests(host);
 CREATE INDEX idx_requests_timestamp ON requests(timestamp);
 CREATE INDEX idx_requests_is_blocked ON requests(is_blocked);
 ```
 
-> SQLite WAL mode bật mặc định để đảm bảo write không block read khi traffic cao.
+> SQLite WAL mode enabled by default to ensure writes don't block reads during high traffic.
 
 ## API Design (Tauri IPC Commands)
 
-Không có HTTP API — giao tiếp qua Tauri commands và events.
+No HTTP API — communicate via Tauri commands and events.
 
 ### Tauri Commands (Frontend → Backend)
 
 | Command | Input | Output | Description |
 |---------|-------|--------|-------------|
-| `start_proxy` | `{ port: u16 }` | `Result<()>` | Khởi động proxy server |
-| `stop_proxy` | — | `Result<()>` | Dừng proxy, restore system proxy |
-| `get_requests` | `{ session_id, filter?, limit?, offset? }` | `Vec<Request>` | Lấy danh sách requests |
-| `get_request_detail` | `{ id }` | `RequestDetail` | Lấy headers + body đầy đủ |
-| `clear_session` | `{ session_id }` | `Result<()>` | Xóa traffic log |
-| `export_session` | `{ session_id, path }` | `Result<()>` | Export ra file HAR/JSON |
+| `start_proxy` | `{ port: u16 }` | `Result<()>` | Start proxy server |
+| `stop_proxy` | — | `Result<()>` | Stop proxy, restore system proxy |
+| `get_requests` | `{ session_id, filter?, limit?, offset? }` | `Vec<Request>` | Get request list |
+| `get_request_detail` | `{ id }` | `RequestDetail` | Get full headers + body |
+| `clear_session` | `{ session_id }` | `Result<()>` | Clear traffic log |
+| `export_session` | `{ session_id, path }` | `Result<()>` | Export to HAR/JSON file |
 | `install_certificate` | — | `Result<()>` | Generate + install CA cert |
-| `get_filter_rules` | — | `Vec<FilterRule>` | Lấy danh sách filter rules |
-| `toggle_ad_blocking` | `{ enabled: bool }` | `Result<()>` | Bật/tắt ad blocking |
-| `update_filter_lists` | — | `Result<()>` | Tải lại EasyList từ file |
+| `get_filter_rules` | — | `Vec<FilterRule>` | Get filter rules list |
+| `toggle_ad_blocking` | `{ enabled: bool }` | `Result<()>` | Enable/disable ad blocking |
+| `update_filter_lists` | — | `Result<()>` | Reload EasyList from file |
 
 ### Tauri Events (Backend → Frontend)
 
 | Event | Payload | Description |
 |-------|---------|-------------|
-| `request_captured` | `RequestSummary` | Emit mỗi khi có request mới |
-| `request_blocked` | `{ id, url, reason }` | Emit khi request bị block |
-| `proxy_status` | `{ running: bool, port: u16 }` | Trạng thái proxy server |
-| `cert_install_status` | `{ success: bool, message }` | Kết quả cài certificate |
+| `request_captured` | `RequestSummary` | Emitted on each new request |
+| `request_blocked` | `{ id, url, reason }` | Emitted when request is blocked |
+| `proxy_status` | `{ running: bool, port: u16 }` | Proxy server status |
+| `cert_install_status` | `{ success: bool, message }` | Certificate install result |
 
 ## Third-party Integrations
 
 | Service | Purpose | Cost | Setup Effort |
-|---------|---------|------|--------------|
-| EasyList (CDN) | Filter list cho ad blocking | Free | Thấp — download file, parse offline |
-| uBlock Origin filter lists | Bổ sung tracker blocking | Free | Thấp — cùng format Adblock Plus |
-| GitHub Releases | Phân phối binary | Free | Thấp — tích hợp GitHub Actions |
-| Tauri updater | Auto-update | Free | Trung bình — cần sign binary |
+|---------|--------|------|--------------|
+| EasyList (CDN) | Filter list for ad blocking | Free | Low — download file, parse offline |
+| uBlock Origin filter lists | Additional tracker blocking | Free | Low — same Adblock Plus format |
+| GitHub Releases | Binary distribution | Free | Low — GitHub Actions integration |
+| Tauri updater | Auto-update | Free | Medium — need to sign binary |
 
-> Không có cloud service nào cần thiết cho MVP. Tất cả xử lý local.
+> No cloud services needed for MVP. All processing is local.
 
 ## MVP Technical Scope
 
@@ -168,37 +168,37 @@ Không có HTTP API — giao tiếp qua Tauri commands và events.
 
 | Feature | Technical Tasks | Effort |
 |---------|----------------|--------|
-| Local HTTP/HTTPS proxy | Hyper server, system proxy config (Win/Mac/Linux), CONNECT tunnel | 2 tuần |
-| One-click SSL setup | rcgen CA generation, OS cert install (3 platform), UI wizard | 1 tuần |
-| Ad/tracker blocking | adblock-rs integration, EasyList download + parse, toggle UI | 1 tuần |
-| Traffic inspector UI | Virtual list component, real-time Tauri events, filter/search bar | 1.5 tuần |
-| Request detail view | Headers/body viewer, timing display, size formatting | 0.5 tuần |
-| Cross-platform packaging | GitHub Actions matrix build, code signing, auto-updater | 1 tuần |
+| Local HTTP/HTTPS proxy | Hyper server, system proxy config (Win/Mac/Linux), CONNECT tunnel | 2 weeks |
+| One-click SSL setup | rcgen CA generation, OS cert install (3 platforms), UI wizard | 1 week |
+| Ad/tracker blocking | adblock-rs integration, EasyList download + parse, toggle UI | 1 week |
+| Traffic inspector UI | Virtual list component, real-time Tauri events, filter/search bar | 1.5 weeks |
+| Request detail view | Headers/body viewer, timing display, size formatting | 0.5 week |
+| Cross-platform packaging | GitHub Actions matrix build, code signing, auto-updater | 1 week |
 
-**Tổng: ~7 tuần**
+**Total: ~7 weeks**
 
 ### Out of Scope (MVP)
 - Request modification / mocking
-- Export session (P1 — sau MVP)
+- Export session (P1 — after MVP)
 - Team collaboration / cloud sync
 - WebSocket / gRPC inspection
 - Plugin ecosystem
 - Mobile companion app
 
 ### MVP Technical Requirements
-- Capture HTTPS traffic trong < 3 phút từ lần cài đầu
-- Filter/search hoạt động mượt với > 1000 requests (virtual list)
-- Proxy latency overhead < 10ms cho request thông thường
+- Capture HTTPS traffic in < 3 minutes from first install
+- Filter/search works smoothly with > 1000 requests (virtual list)
+- Proxy latency overhead < 10ms for normal requests
 - Bundle size < 20MB (installer)
 
 ## Security
 
-- **CA Certificate**: Chỉ install local, không gửi ra ngoài. Private key lưu trong app data directory với permission 600.
-- **Traffic data**: Tất cả local, không telemetry, không cloud sync.
-- **Open source**: Transparency là moat chính — user có thể audit code.
-- **System proxy**: Restore về cài đặt gốc khi app crash (cleanup hook).
-- **Body storage**: Request/response body có thể chứa sensitive data — cân nhắc encrypt SQLite file (SQLCipher) ở Pro tier.
-- **Compliance**: GDPR không áp dụng (không collect data). Cần disclaimer rõ ràng: "chỉ dùng để debug traffic của chính bạn".
+- **CA Certificate**: Only install locally, never send externally. Private key stored in app data directory with permission 600.
+- **Traffic data**: All local, no telemetry, no cloud sync.
+- **Open source**: Transparency is the main moat — users can audit code.
+- **System proxy**: Restore to original settings when app crashes (cleanup hook).
+- **Body storage**: Request/response bodies may contain sensitive data — consider encrypting SQLite file (SQLCipher) at Pro tier.
+- **Compliance**: GDPR doesn't apply (no data collection). Need clear disclaimer: "only use to debug your own traffic".
 
 ## Infrastructure
 
@@ -210,7 +210,7 @@ Không có HTTP API — giao tiếp qua Tauri commands và events.
 | staging | Pre-release testing | GitHub Actions build, manual QA |
 | prod | GitHub Releases | Signed binary, auto-updater endpoint |
 
-> Không có server infrastructure. App chạy hoàn toàn local.
+> No server infrastructure needed. App runs entirely locally.
 
 ### Distribution
 
@@ -229,10 +229,10 @@ GitHub Actions (matrix build)
 
 ### Monitoring & Logging
 
-- **Crash reporting**: Tauri panic handler → write log file local (không gửi ra ngoài)
-- **App logs**: `tracing` crate → file log trong app data directory
-- **GitHub Issues**: User-reported bugs (không có automated crash reporting cho MVP)
-- **Analytics**: Không có — privacy-first là selling point
+- **Crash reporting**: Tauri panic handler → write log file locally (no external sending)
+- **App logs**: `tracing` crate → log file in app data directory
+- **GitHub Issues**: User-reported bugs (no automated crash reporting for MVP)
+- **Analytics**: None — privacy-first is a selling point
 
 ### CI/CD Pipeline
 
@@ -251,44 +251,44 @@ jobs:
 
 | Risk | Likelihood | Impact | Mitigation |
 |------|------------|--------|-----------|
-| SSL cert install khác nhau giữa OS versions | HIGH | HIGH | Test sớm trên Win 10/11, macOS 13/14, Ubuntu 22/24. Document fallback manual steps |
-| System proxy API quirks trên Linux | MEDIUM | HIGH | Hỗ trợ gsettings (GNOME) + KDE + env vars + PAC file |
-| hudsucker crate ít maintained | MEDIUM | MEDIUM | Evaluate mitmproxy-rs hoặc build trực tiếp trên hyper nếu cần |
-| Performance với traffic cao (>500 req/s) | MEDIUM | MEDIUM | SQLite WAL + in-memory ring buffer cho active session, lazy load body |
-| Code signing cost (Windows/macOS) | LOW | MEDIUM | $99/năm Apple Developer + ~$300/năm Windows cert — tính vào budget |
-| User lo ngại MITM proxy | LOW | HIGH | Open source + clear documentation + local-only messaging |
+| SSL cert install differs across OS versions | HIGH | HIGH | Test early on Win 10/11, macOS 13/14, Ubuntu 22/24. Document fallback manual steps |
+| System proxy API quirks on Linux | MEDIUM | HIGH | Support gsettings (GNOME) + KDE + env vars + PAC file |
+| hudsucker crate is poorly maintained | MEDIUM | MEDIUM | Evaluate mitmproxy-rs or build directly on hyper if needed |
+| Performance with high traffic (>500 req/s) | MEDIUM | MEDIUM | SQLite WAL + in-memory ring buffer for active session, lazy load body |
+| Code signing cost (Windows/macOS) | LOW | MEDIUM | $99/year Apple Developer + ~$300/year Windows cert — factor into budget |
+| Users concerned about MITM proxy | LOW | HIGH | Open source + clear documentation + local-only messaging |
 
 ## Effort Estimate
 
 | Milestone | Tasks | Estimate | Dependencies |
 |-----------|-------|----------|--------------|
-| M1: Proxy core | HTTP proxy + CONNECT tunnel + system proxy config | 2 tuần | — |
-| M2: SSL setup | CA cert gen + OS install (3 platforms) | 1 tuần | M1 |
-| M3: Ad blocking | adblock-rs + EasyList integration | 1 tuần | M1 |
-| M4: UI - Traffic list | Virtual list + real-time events + filter/search | 1.5 tuần | M1 |
-| M5: UI - Detail view | Headers/body viewer + timing | 0.5 tuần | M4 |
-| M6: Packaging | GitHub Actions + signing + auto-updater | 1 tuần | M1-M5 |
+| M1: Proxy core | HTTP proxy + CONNECT tunnel + system proxy config | 2 weeks | — |
+| M2: SSL setup | CA cert gen + OS install (3 platforms) | 1 week | M1 |
+| M3: Ad blocking | adblock-rs + EasyList integration | 1 week | M1 |
+| M4: UI - Traffic list | Virtual list + real-time events + filter/search | 1.5 weeks | M1 |
+| M5: UI - Detail view | Headers/body viewer + timing | 0.5 week | M4 |
+| M6: Packaging | GitHub Actions + signing + auto-updater | 1 week | M1-M5 |
 
-**Tổng MVP: ~7 tuần (1 developer)**
+**Total MVP: ~7 weeks (1 developer)**
 
 ## Scaling Plan
 
-| Stage | Trigger | Thay đổi |
+| Stage | Trigger | Changes |
 |-------|---------|---------|
-| MVP (local) | 0 → 10K users | Không cần server. Chỉ cần GitHub Releases bandwidth |
-| Pro tier | 1K Pro users | Thêm license server đơn giản (Cloudflare Worker + KV) để validate key |
-| Team features | 10K+ users | Cloud sync optional — S3 + simple API. Vẫn local-first |
+| MVP (local) | 0 → 10K users | No server needed. Just GitHub Releases bandwidth |
+| Pro tier | 1K Pro users | Add simple license server (Cloudflare Worker + KV) to validate key |
+| Team features | 10K+ users | Optional cloud sync — S3 + simple API. Still local-first |
 | Enterprise | 100+ team seats | Self-hosted option, SSO integration |
 
 ## Development Guidelines
 
 ### Code Standards
-- Rust: stable channel, `clippy` với `#![deny(warnings)]`
+- Rust: stable channel, `clippy` with `#![deny(warnings)]`
 - TypeScript: strict mode, ESLint + Prettier
-- Testing: `cargo test` cho Rust logic, `vitest` cho frontend components
+- Testing: `cargo test` for Rust logic, `vitest` for frontend components
 - Commit: Conventional Commits (`feat:`, `fix:`, `chore:`)
 
 ### Git Workflow
 - Branch: `main` (production) + feature branches
 - PR: require 1 review + CI pass
-- Release: tag `v0.x.x` → GitHub Actions tự động build + publish
+- Release: tag `v0.x.x` → GitHub Actions auto build + publish

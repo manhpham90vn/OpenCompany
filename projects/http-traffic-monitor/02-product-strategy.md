@@ -6,66 +6,66 @@
 
 ## Problem Statement
 
-Solo developer và QA engineer mất 10-15 phút setup công cụ debug HTTP, sau đó phải vất vả tìm request cần thiết trong đống quảng cáo/analytics noise — vì không có tool miễn phí nào kết hợp traffic inspection với ad-blocking trong một GUI đơn giản, cross-platform.
+Solo developers and QA engineers spend 10-15 minutes setting up HTTP debugging tools, then struggle to find the needed requests in a pile of ad/analytics noise — because there's no free tool that combines traffic inspection with ad-blocking in a simple, cross-platform GUI.
 
 ## Solution Overview
 
-**FlowProxy** là một cross-platform desktop app giúp developer debug HTTP/HTTPS traffic nhanh hơn bằng cách kết hợp local proxy, traffic inspector, và ad-blocker trong một công cụ duy nhất — miễn phí, không cần setup phức tạp.
+**FlowProxy** is a cross-platform desktop app that helps developers debug HTTP/HTTPS traffic faster by combining local proxy, traffic inspector, and ad-blocker in a single tool — free, no complex setup required.
 
 ## Validation
 
 | Criteria | Assessment | Evidence | Notes |
 |----------|-----------|----------|-------|
-| Problem (real?) | HIGH | 4M+ devs dùng Fiddler, mitmproxy phổ biến dù UX kém | Developer thực sự đang chịu đựng tool cũ hoặc trả $90+/năm |
-| Solution (better?) | HIGH | Không có tool miễn phí nào kết hợp ad-blocking + inspection + GUI đẹp | Gap rõ ràng, chưa ai lấp |
-| Market (big enough?) | MEDIUM | SAM ~$500M, SOM ~$10-50M | Đủ lớn cho indie product, không phải VC-scale |
-| Timing (why now?) | HIGH | Electron/Tauri trưởng thành, HTTP/3 tạo cơ hội, emerging markets tăng trưởng | Stack để build đã sẵn sàng |
+| Problem (real?) | HIGH | 4M+ devs use Fiddler, mitmproxy is popular despite poor UX | Developers really suffer with old tools or pay $90+/year |
+| Solution (better?) | HIGH | No free tool combines ad-blocking + inspection + beautiful GUI | Clear gap, no one has filled it yet |
+| Market (big enough?) | MEDIUM | SAM ~$500M, SOM ~$10-50M | Big enough for indie product, not VC-scale |
+| Timing (why now?) | HIGH | Electron/Tauri mature, HTTP/3 creates opportunity, emerging markets growing | Stack to build is ready |
 
 ## ICP (Ideal Customer Profile)
 
 ### Primary ICP
-- Who: Solo developer / freelancer làm web hoặc mobile app
+- Who: Solo developer / freelancer building web or mobile apps
 - Industry: Software development, mobile development
-- Company size: Individual hoặc startup 1-10 người
-- Budget range: $0-20/năm
-- Willingness-to-pay: $0 (free), $49/năm (pro)
-- Current alternatives: Charles Proxy (đắt), mitmproxy (khó dùng), browser DevTools (giới hạn)
+- Company size: Individual or startup 1-10 people
+- Budget range: $0-20/year
+- Willingness-to-pay: $0 (free), $49/year (pro)
+- Current alternatives: Charles Proxy (expensive), mitmproxy (hard to use), browser DevTools (limited)
 
 ### User Segments
 
 | Segment | Size | Priority | Key Needs |
 |---------|------|----------|-----------|
-| Solo Developer / Freelancer | ~1M (emerging markets) | P0 | Debug nhanh, miễn phí, không setup phức tạp |
-| QA Engineer | ~500K | P1 | Capture + filter requests, giảm noise từ ads |
-| Privacy-conscious user | ~2M | P2 | Biết app đang gửi gì, block tracker |
+| Solo Developer / Freelancer | ~1M (emerging markets) | P0 | Quick debugging, free, no complex setup |
+| QA Engineer | ~500K | P1 | Capture + filter requests, reduce noise from ads |
+| Privacy-conscious user | ~2M | P2 | Know what apps are sending, block trackers |
 
 ## Value Proposition
 
 ### Positioning Statement
-> For solo developers và QA engineers, FlowProxy là HTTP debugging tool miễn phí kết hợp traffic inspection và ad-blocking trong một app cross-platform. Unlike Charles/Proxyman (đắt tiền) và mitmproxy (CLI-only), chúng tôi cung cấp GUI hiện đại với one-click setup — không mất tiền, không mất thời gian.
+> For solo developers and QA engineers, FlowProxy is a free HTTP debugging tool that combines traffic inspection and ad-blocking in a cross-platform app. Unlike Charles/Proxyman (expensive) and mitmproxy (CLI-only), we provide a modern GUI with one-click setup — no money, no time wasted.
 
 ### Key Benefits
-1. **Miễn phí và open-source** — không cần trả $90+/năm cho Charles hay Fiddler
-2. **Zero noise debugging** — tự động filter ad/tracker traffic, chỉ thấy request quan trọng
-3. **One-click setup** — tự động install SSL certificate, không cần config thủ công
+1. **Free and open-source** — no need to pay $90+/year for Charles or Fiddler
+2. **Zero noise debugging** — auto-filter ad/tracker traffic, only see important requests
+3. **One-click setup** — auto-install SSL certificate, no manual config needed
 
 ### Differentiation
-- Tại sao không dùng **mitmproxy**? CLI-only, barrier to entry cao, không có ad-blocking tích hợp
-- Tại sao không dùng **Charles/Proxyman**? $50-90 one-time hoặc $90/năm — quá đắt cho individual dev ở emerging markets
-- Tại sao không tự build? Setup mitmproxy + uBlock rules mất vài giờ, không có unified UI
+- Why not use **mitmproxy**? CLI-only, high barrier to entry, no integrated ad-blocking
+- Why not use **Charles/Proxyman**? $50-90 one-time or $90/year — too expensive for individual devs in emerging markets
+- Why not build yourself? Setting up mitmproxy + uBlock rules takes hours, no unified UI
 
 ## MVP Scope
 
 ### Must-have (P0)
-1. **Local HTTP/HTTPS proxy** — intercept traffic từ mọi app trên máy, không chỉ browser
-2. **One-click SSL certificate setup** — tự động generate và install CA certificate
-3. **Traffic inspector UI** — list requests theo thời gian thực, filter, search
-4. **Built-in ad/tracker blocking** — tích hợp EasyList + uBlock filter lists
+1. **Local HTTP/HTTPS proxy** — intercept traffic from all apps on the machine, not just browser
+2. **One-click SSL certificate setup** — auto-generate and install CA certificate
+3. **Traffic inspector UI** — list requests in real-time, filter, search
+4. **Built-in ad/tracker blocking** — integrate EasyList + uBlock filter lists
 
 ### Nice-to-have (P1)
-1. **Request/response detail view** — xem headers, body, timing, size
-2. **Quick toggle "hide ad traffic"** — ẩn/hiện ad requests trong cùng 1 view
-3. **Export session** — lưu traffic log ra file để share hoặc replay
+1. **Request/response detail view** — view headers, body, timing, size
+2. **Quick toggle "hide ad traffic"** — show/hide ad requests in the same view
+3. **Export session** — save traffic log to file for sharing or replay
 
 ### Out of Scope (for MVP)
 1. Team collaboration / cloud sync
@@ -75,20 +75,20 @@ Solo developer và QA engineer mất 10-15 phút setup công cụ debug HTTP, sa
 5. WebSocket / gRPC inspection
 
 ### MVP Success Criteria
-- User có thể capture HTTPS traffic trong vòng **3 phút** kể từ lần cài đầu tiên
-- Ad traffic bị block tự động mà không cần config thêm
-- Filter/search hoạt động với >1000 requests mà không lag
+- User can capture HTTPS traffic within **3 minutes** from first install
+- Ad traffic is blocked automatically without additional config
+- Filter/search works with >1000 requests without lag
 
 ## User Stories
 
 | As a | I want to | So that | Priority |
 |------|-----------|---------|----------|
-| Solo developer | Xem HTTPS traffic của app tôi đang build | Tôi có thể debug API calls mà không cần setup phức tạp | P0 |
-| Solo developer | Tự động block ad/tracker requests | Traffic log chỉ hiện request liên quan đến app của tôi | P0 |
-| QA engineer | Filter requests theo domain hoặc status code | Tôi tìm được request cần test nhanh hơn | P0 |
-| Developer | Cài app và bắt đầu capture trong < 3 phút | Tôi không mất thời gian vào setup | P0 |
-| Developer | Xem chi tiết headers và body của từng request | Tôi debug được lỗi API chính xác hơn | P1 |
-| QA engineer | Export traffic session ra file | Tôi share được bug report với developer | P1 |
+| Solo developer | See HTTPS traffic from my app being built | I can debug API calls without complex setup | P0 |
+| Solo developer | Auto-block ad/tracker requests | Traffic log only shows requests related to my app | P0 |
+| QA engineer | Filter requests by domain or status code | I can find requests to test faster | P0 |
+| Developer | Install app and start capturing in < 3 minutes | I don't waste time on setup | P0 |
+| Developer | See headers and body of each request | I can debug API errors more precisely | P1 |
+| QA engineer | Export traffic session to file | I can share bug reports with developers | P1 |
 
 ## Business Model
 
@@ -100,56 +100,56 @@ Solo developer và QA engineer mất 10-15 phút setup công cụ debug HTTP, sa
 | Tier | Price | Features | Target |
 |------|-------|----------|--------|
 | Free | $0 | Proxy + inspector + ad blocking, unlimited requests | Solo dev, students |
-| Pro | $49/năm | Request mocking, export sessions, rule engine, priority support | QA engineer, power user |
-| Enterprise | Custom | Team license, SSO, audit log | Dev team 10+ người |
+| Pro | $49/year | Request mocking, export sessions, rule engine, priority support | QA engineer, power user |
+| Enterprise | Custom | Team license, SSO, audit log | Dev team 10+ people |
 
 ### Unit Economics (Estimated)
 - CAC: ~$5 (organic — GitHub, HN, Reddit)
-- LTV (Pro): ~$98 (2 năm average retention)
+- LTV (Pro): ~$98 (2 years average retention)
 - LTV:CAC ratio: ~20:1
-- Payback period: < 1 tháng
-- Target: 1000 Pro users năm đầu = ~$49K ARR
+- Payback period: < 1 month
+- Target: 1000 Pro users first year = ~$49K ARR
 
 ## Moat / Defensibility
 
 | Moat Type | Strength | Description |
 |-----------|----------|-------------|
-| Network effects | LOW | Tool cá nhân, không có network effect tự nhiên |
-| Data | LOW | Local-only, không collect user data (feature, không phải bug) |
-| Switching costs | MEDIUM | Khi user đã quen workflow + custom rules, ngại chuyển tool |
-| Brand | MEDIUM | First-mover trong "free HTTP inspector + ad blocker" niche |
-| Technology | LOW | Stack không độc quyền, competitor có thể copy |
+| Network effects | LOW | Personal tool, no natural network effect |
+| Data | LOW | Local-only, don't collect user data (feature, not bug) |
+| Switching costs | MEDIUM | When users get used to workflow + custom rules, they're reluctant to switch |
+| Brand | MEDIUM | First-mover in "free HTTP inspector + ad blocker" niche |
+| Technology | LOW | Stack isn't proprietary, competitors can copy |
 
-> Moat chính là **brand + community** — build OSS, grow GitHub stars, trở thành go-to tool cho emerging market developers.
+> Main moat is **brand + community** — build OSS, grow GitHub stars, become the go-to tool for emerging market developers.
 
 ## Risks & Mitigation
 
 | Risk | Likelihood | Impact | Mitigation |
 |------|------------|--------|-----------|
-| mitmproxy ra GUI chính thức | MEDIUM | HIGH | Ship nhanh, build community trước khi họ kịp react |
-| Browser DevTools ngày càng mạnh | HIGH | MEDIUM | Focus vào non-browser traffic (mobile, desktop apps) |
-| SSL/TLS complexity tăng, harder to intercept | MEDIUM | HIGH | Invest vào certificate management UX, document rõ ràng |
-| Monetization khó — user không upgrade | HIGH | MEDIUM | Validate Pro features với QA segment trước khi build |
-| Legal/privacy concerns | LOW | HIGH | Rõ ràng: chỉ local traffic, không gửi data ra ngoài, open source |
+| mitmproxy launches official GUI | MEDIUM | HIGH | Ship fast, build community before they react |
+| Browser DevTools getting stronger | HIGH | MEDIUM | Focus on non-browser traffic (mobile, desktop apps) |
+| SSL/TLS complexity increasing, harder to intercept | MEDIUM | HIGH | Invest in certificate management UX, document clearly |
+| Monetization difficulty — users don't upgrade | HIGH | MEDIUM | Validate Pro features with QA segment before building |
+| Legal/privacy concerns | LOW | HIGH | Clear: only local traffic, no data sent externally, open source |
 
 ## Go / No-go
 
 - **Decision:** CONDITIONAL GO
-- **Reasoning:** Gap thị trường có thật, stack để build đã sẵn sàng, CAC thấp nhờ organic distribution. Tuy nhiên moat mỏng — thành bại phụ thuộc vào tốc độ ship và chất lượng UX, không phải tính năng.
+- **Reasoning:** Real market gap exists, stack to build is ready, low CAC thanks to organic distribution. However, thin moat — success depends on shipping speed and UX quality, not features.
 - **Conditions:**
-  - Validate với ít nhất 5 developer thực tế rằng họ sẽ dùng tool này thay Charles/mitmproxy
-  - Confirm Pro features ($49/năm) đủ hấp dẫn để QA engineer upgrade
-  - Ship MVP trong 6-8 tuần, không scope creep
+  - Validate with at least 5 real developers that they would use this tool instead of Charles/mitmproxy
+  - Confirm Pro features ($49/year) are compelling enough for QA engineers to upgrade
+  - Ship MVP in 6-8 weeks, no scope creep
 
 ## Assumptions
-- Developer ở emerging markets (SEA, India) là early adopter chính — chưa validate trực tiếp
-- EasyList/uBlock filter lists đủ để block phần lớn ad traffic mà không cần maintain custom list
-- Freemium conversion rate ~2-5% (industry average cho developer tools)
-- Organic distribution qua GitHub/HN đủ để reach 10K users năm đầu
+- Developers in emerging markets (SEA, India) are primary early adopters — not yet validated directly
+- EasyList/uBlock filter lists are sufficient to block most ad traffic without maintaining custom lists
+- Freemium conversion rate ~2-5% (industry average for developer tools)
+- Organic distribution via GitHub/HN is enough to reach 10K users in first year
 
 ## Next Steps
-- [ ] Phỏng vấn 5 developer về workflow debug hiện tại và pain points
-- [ ] Build prototype: proxy + basic UI (2 tuần)
-- [ ] Test one-click SSL setup trên Windows, macOS, Linux
-- [ ] Post lên HN "Show HN" để validate interest
-- [ ] Quyết định tech stack: Tauri (Rust) vs Electron (Node.js)
+- [ ] Interview 5 developers about current debug workflow and pain points
+- [ ] Build prototype: proxy + basic UI (2 weeks)
+- [ ] Test one-click SSL setup on Windows, macOS, Linux
+- [ ] Post on HN "Show HN" to validate interest
+- [ ] Decide tech stack: Tauri (Rust) vs Electron (Node.js)

@@ -1,33 +1,33 @@
 # OpenCompany
 
-A framework for developing SaaS products from idea to launch, built on Claude Code.
+A framework for building SaaS products from idea to launch, powered by Claude Code.
 
 ## Overview
 
-OpenCompany is a SaaS incubator that helps entrepreneurs and product teams systematically develop SaaS products through 6 specialized AI roles. Each role handles a specific phase of the product lifecycle, from market research to post-launch operations.
+OpenCompany is a SaaS incubator that guides you through 6 sequential phases, each powered by a specialized AI role. Each role builds on the previous phase's output to systematically develop your SaaS from market research through post-launch operations.
 
-## 6 AI Roles
+## The 6 AI Roles
 
 | Role | Responsibility |
 |------|----------------|
-| **Market Researcher** | Market analysis, competitor research, pain point and opportunity identification |
-| **Product Strategist** | Idea validation, MVP definition, positioning and business model |
-| **Technical Architect** | Architecture design, tech stack selection, system design from MVP to scale |
-| **Implementation Lead** | Development from setup to deploy, ensuring quality and velocity |
-| **Growth Strategist** | Go-to-market strategy, acquisition and retention |
-| **SaaS Operator** | Post-launch operations, optimization and scaling |
+| **Market Researcher** | Analyze markets, research competitors, identify pain points and opportunities |
+| **Product Strategist** | Validate ideas, define MVP, establish positioning and business model |
+| **Technical Architect** | Design architecture, select tech stack, plan system from MVP to scale |
+| **Implementation Lead** | Lead development from setup to deployment, ensuring quality and velocity |
+| **Growth Strategist** | Build go-to-market strategy, drive acquisition and retention |
+| **SaaS Operator** | Manage post-launch operations, optimize and scale the business |
 
 ## Directory Structure
 
 ```
-├── skills/                   # 6 AI roles
+├── skills/                      # 6 AI role skills
 │   ├── market-researcher/
 │   ├── product-strategist/
 │   ├── technical-architect/
 │   ├── implementation-lead/
 │   ├── growth-strategist/
 │   └── saas-operator/
-├── projects/                 # SaaS projects
+├── projects/                    # Your SaaS projects
 │   └── [project-slug]/
 │       ├── 01-market-research.md
 │       ├── 02-product-strategy.md
@@ -39,52 +39,53 @@ OpenCompany is a SaaS incubator that helps entrepreneurs and product teams syste
     └── settings.local.json
 ```
 
-## Usage
+## Workflow
 
-### Workflow
-
-Each SaaS project goes through 6 sequential phases:
+Each project progresses through 6 sequential phases:
 
 ```
 Market Research → Product Strategy → Technical Architecture
     → Implementation → Growth Strategy → Operations
 ```
 
-Each phase reads the output of the previous phase and produces deliverables for the next.
+Each phase reads the previous phase's output and produces deliverables for the next.
 
-### Invoking Roles
+## Usage
+
+### Invoke Roles
 
 ```
-/market-researcher     # Market research
-/product-strategist    # Product strategy
-/technical-architect   # Technical architecture
-/implementation-lead   # Implementation
-/growth-strategist     # Growth strategy
-/saas-operator         # Operations
+/market-researcher     # Conduct market research
+/product-strategist    # Define product strategy
+/technical-architect   # Design technical architecture
+/implementation-lead   # Lead implementation
+/growth-strategist     # Plan growth strategy
+/saas-operator        # Manage operations
 ```
 
 ### Process
 
 1. Create a new project directory under `projects/`
-2. Run `/market-researcher` to conduct market research
+2. Run `/market-researcher` to analyze the market
 3. Review and validate findings
 4. Run the next role — each role automatically reads prior output
 5. Repeat until all 6 phases are complete
 
-## Principles
+## Core Principles
 
 - **Data-driven** — Every decision backed by data
 - **Kill ideas early** — Discard non-viable ideas fast
-- **Validate with users** — Confirm with users before finalizing
+- **Validate with users** — Confirm with real users before finalizing
 - **MVP first** — Focus on the minimum viable feature set
 - **Measure everything** — Track all metrics post-launch
 
-## Projects
+## Current Projects
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| **AI Chat App** | AI-native team collaboration tool with task delegation for SMBs | Market research done |
-| **Note App AI** | Markdown note-taking app with AI assistance for developers | Market research done |
+| **AI Chat App** | AI-native team collaboration tool with task delegation for SMBs | Phase 1: Market Research ✓ |
+| **Note App AI** | Markdown note-taking app with AI assistance for developers | Phase 1: Market Research ✓ |
+| **HTTP Traffic Monitor** | Real-time HTTP traffic analysis and monitoring tool | Phase 5: Growth Strategy ✓ |
 
 ## Requirements
 

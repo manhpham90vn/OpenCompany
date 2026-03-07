@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-Thị trường developer tools cho HTTP debugging đang tăng trưởng ổn định (~10.6% CAGR), với hơn 4 triệu developer đang dùng các tool như Fiddler. Tuy nhiên, không có tool nào kết hợp được **ad-blocking + HTTP inspection** trong một giao diện đơn giản, cross-platform, miễn phí. Đây là cơ hội để xây dựng một tool mới nhắm vào solo developer và QA engineer cần debug traffic nhanh mà không phải trả $90+/năm.
+The developer tools market for HTTP debugging is growing steadily (~10.6% CAGR), with over 4 million developers using tools like Fiddler. However, no tool combines **ad-blocking + HTTP inspection** in a simple, cross-platform, free interface. This is an opportunity to build a new tool targeting solo developers and QA engineers who need to debug traffic quickly without paying $90+/year.
 
 ---
 
@@ -19,20 +19,20 @@ Thị trường developer tools cho HTTP debugging đang tăng trưởng ổn đ
 - **SOM** (Serviceable Obtainable Market): ~$10-50M (Individual developers + QA engineers, cross-platform)
 - **CAGR**: 10.6% (Network Traffic Analyzer), 11.7% (Traffic Management overall)
 
-> Assumption: SAM ước tính dựa trên tỷ lệ developer tools trong tổng thị trường network analysis (~15-20%). Chưa có báo cáo riêng cho HTTP proxy tools.
+> Assumption: SAM estimated based on developer tools share of total network analysis market (~15-20%). No dedicated reports for HTTP proxy tools segment.
 
 ### Key Trends
 
-1. **Remote work & distributed teams** - Developer cần debug traffic từ nhiều môi trường khác nhau, nhu cầu local proxy tăng
-2. **Mobile-first development** - Nhiều app mobile cần inspect HTTPS traffic để debug API calls
-3. **Privacy awareness tăng** - Người dùng ngày càng quan tâm đến việc biết app nào đang gửi request đi đâu
-4. **Open source preference** - Developer community ngày càng ưa chuộng free/OSS tools thay vì trả license fee
+1. **Remote work & distributed teams** - Developers need to debug traffic from various environments, increasing demand for local proxies
+2. **Mobile-first development** - More mobile apps need to inspect HTTPS traffic to debug API calls
+3. **Growing privacy awareness** - Users increasingly want to know which apps are sending requests where
+4. **Open source preference** - Developer community increasingly prefers free/OSS tools over paid licenses
 
 ### Emerging Technologies
 
-- **HTTP/3 & QUIC** - Các tool cũ chưa hỗ trợ tốt, tạo cơ hội cho tool mới
-- **WebSocket & gRPC** - Ngày càng phổ biến, cần tool hỗ trợ inspect các protocol này
-- **Electron/Tauri** - Cho phép build cross-platform desktop app với web tech stack
+- **HTTP/3 & QUIC** - Older tools don't support these well, creating opportunity for new tools
+- **WebSocket & gRPC** - Growing in popularity, need tools to inspect these protocols
+- **Electron/Tauri** - Enable building cross-platform desktop apps with web tech stacks
 
 ---
 
@@ -42,44 +42,44 @@ Thị trường developer tools cho HTTP debugging đang tăng trưởng ổn đ
 
 | Competitor | Positioning | Pricing | Strengths | Weaknesses | Market Share |
 |-----------|------------|---------|-----------|----------|-------------|
-| **Charles Proxy** | HTTP proxy cho dev/QA | ~$50-90 one-time | Mature, feature-rich, SSL support | UI cũ, macOS-centric, có phí | Cao (legacy) |
-| **Proxyman** | Modern HTTP debugger | $89 one-time / $12/mo team | UI đẹp, cross-platform, 350K+ users | Có phí, không có ad-blocking | Đang tăng |
-| **Fiddler Everywhere** | Web debugging proxy | ~$90/year | 4M+ devs, cross-platform, SOC2 | Subscription model, nặng | Cao |
-| **mitmproxy** | CLI/scripting proxy | Free (OSS) | Miễn phí, scriptable, powerful | CLI khó dùng, UX kém | Trung bình |
-| **Wireshark** | Network protocol analyzer | Free (OSS) | Rất mạnh, 20M+ downloads/năm | Quá phức tạp, overkill cho dev | Cao (enterprise) |
-| **Pi-hole** | Network-wide ad blocker | Free (OSS) | Block toàn mạng, DNS-level | Cần hardware riêng, không xem traffic | Trung bình |
+| **Charles Proxy** | HTTP proxy for dev/QA | ~$50-90 one-time | Mature, feature-rich, SSL support | Old UI, macOS-centric, paid | High (legacy) |
+| **Proxyman** | Modern HTTP debugger | $89 one-time / $12/mo team | Beautiful UI, cross-platform, 350K+ users | Paid, no ad-blocking | Growing |
+| **Fiddler Everywhere** | Web debugging proxy | ~$90/year | 4M+ devs, cross-platform, SOC2 | Subscription model, heavy | High |
+| **mitmproxy** | CLI/scripting proxy | Free (OSS) | Free, scriptable, powerful | CLI is difficult to use, poor UX | Medium |
+| **Wireshark** | Network protocol analyzer | Free (OSS) | Very powerful, 20M+ downloads/year | Too complex, overkill for dev | High (enterprise) |
+| **Pi-hole** | Network-wide ad blocker | Free (OSS) | Blocks network-wide, DNS-level | Requires dedicated hardware, no traffic viewing | Medium |
 
 ### Indirect Competitors & Alternatives
 
 | Alternative | Current Usage | Limitations |
 |------------|--------------|-------------|
-| **Browser DevTools** | Rất phổ biến | Chỉ xem traffic của browser, không xem app khác |
-| **uBlock Origin** | 40M+ users | Chỉ block trong browser, không xem raw requests |
-| **Burp Suite** | Security testing | Quá phức tạp, hướng pentest, không phải dev tool |
-| **Postman Interceptor** | API testing | Chỉ capture, không block ads |
-| **ngrok** | Tunnel/inspect | Hướng expose local server, không phải local proxy |
+| **Browser DevTools** | Very popular | Only sees browser traffic, not other apps |
+| **uBlock Origin** | 40M+ users | Only blocks in browser, can't see raw requests |
+| **Burp Suite** | Security testing | Too complex, pentest-oriented, not a dev tool |
+| **Postman Interceptor** | API testing | Only captures, doesn't block ads |
+| **ngrok** | Tunnel/inspect | Focused on exposing local servers, not local proxy |
 
 ### Competitor Gaps
 
-1. **Không có tool miễn phí nào** kết hợp ad-blocking + HTTP inspection với UI đẹp, cross-platform
-2. **mitmproxy** là OSS duy nhất nhưng CLI-only, barrier to entry cao cho non-technical users
-3. **Không tool nào** có tính năng "quick filter" để tách biệt ad traffic vs app traffic trong cùng 1 view
-4. **Pi-hole** block ở DNS level nhưng không cho xem request details - thiếu visibility
-5. **Charles/Proxyman** đắt tiền cho individual developer ở các thị trường emerging (Vietnam, SEA, India)
+1. **No free tool** combines ad-blocking + HTTP inspection with beautiful UI, cross-platform
+2. **mitmproxy** is the only OSS but CLI-only, high barrier to entry for non-technical users
+3. **No tool** has "quick filter" feature to separate ad traffic vs app traffic in the same view
+4. **Pi-hole** blocks at DNS level but doesn't show request details - lacks visibility
+5. **Charles/Proxyman** are expensive for individual developers in emerging markets (Vietnam, SEA, India)
 
 ---
 
 ## Pain Points (ranked by severity)
 
-1. **Không thể xem HTTPS traffic của app** - Developer cần debug API calls nhưng traffic bị encrypt. Hiện tại phải setup certificate phức tạp với Charles/mitmproxy. Severity: **HIGH**
+1. **Can't see HTTPS traffic from apps** - Developers need to debug API calls but traffic is encrypted. Currently requires complex certificate setup with Charles/mitmproxy. Severity: **HIGH**
 
-2. **Quảng cáo làm chậm app và tốn bandwidth** - Khi test app, ads requests làm noise trong traffic log, khó tìm request cần debug. Severity: **HIGH**
+2. **Ads slow down apps and waste bandwidth** - When testing apps, ad requests create noise in traffic logs, making it difficult to find requests to debug. Severity: **HIGH**
 
-3. **Tool hiện tại quá đắt hoặc quá phức tạp** - Charles/Proxyman $90+, mitmproxy cần biết CLI. Developer cá nhân ở emerging markets không muốn trả. Severity: **MEDIUM**
+3. **Current tools are too expensive or too complex** - Charles/Proxyman $90+, mitmproxy requires CLI knowledge. Individual developers in emerging markets don't want to pay. Severity: **MEDIUM**
 
-4. **Không có unified view** - Phải dùng 2 tool riêng: 1 để block ads (Pi-hole/uBlock), 1 để inspect traffic (Charles/Fiddler). Severity: **MEDIUM**
+4. **No unified view** - Must use 2 separate tools: 1 for blocking ads (Pi-hole/uBlock), 1 for inspecting traffic (Charles/Fiddler). Severity: **MEDIUM**
 
-5. **Setup phức tạp** - Cài SSL certificate, configure proxy settings trên từng device/app. Severity: **MEDIUM**
+5. **Complex setup** - Installing SSL certificates, configuring proxy settings on each device/app. Severity: **MEDIUM**
 
 ---
 
@@ -87,48 +87,48 @@ Thị trường developer tools cho HTTP debugging đang tăng trưởng ổn đ
 
 ### ICP (Ideal Customer Profile)
 
-- **Company size**: Individual / Startup (1-50 người)
+- **Company size**: Individual / Startup (1-50 people)
 - **Industry**: Software development, QA/Testing, Mobile development
 - **Role/Title**: Frontend Developer, Mobile Developer, QA Engineer, Full-stack Developer
-- **Budget range**: $0-30/năm (prefer free, willing to pay for premium features)
+- **Budget range**: $0-30/year (prefer free, willing to pay for premium features)
 
 ### User Segments
 
 | Segment | Characteristics | Key Pain Points | Willingness to Pay |
 |---------|----------------|-----------------|-------------------|
-| **Solo Developer** | Freelancer, indie dev, side project | Cần debug nhanh, không muốn trả nhiều | $0-20/năm |
-| **QA Engineer** | Test web/mobile apps | Cần capture + replay requests, filter noise | $20-50/năm |
-| **Privacy-conscious user** | Non-technical, muốn biết app làm gì | Không biết dùng CLI tools | $0-10/năm |
-| **Security researcher** | Pentest, bug bounty | Cần intercept + modify requests | $50-100/năm |
+| **Solo Developer** | Freelancer, indie dev, side project | Need quick debugging, don't want to pay much | $0-20/year |
+| **QA Engineer** | Test web/mobile apps | Need capture + replay requests, filter noise | $20-50/year |
+| **Privacy-conscious user** | Non-technical, wants to know what apps do | Can't use CLI tools | $0-10/year |
+| **Security researcher** | Pentest, bug bounty | Need to intercept + modify requests | $50-100/year |
 
 ### Current Workflow
 
 **Developer debugging API:**
-1. Mở Charles/Fiddler → Configure proxy → Install certificate
-2. Chạy app → Xem traffic (bị lẫn với ads/analytics)
-3. Filter thủ công để tìm request cần debug
-4. Friction: Setup mất 10-15 phút, ads làm noise
+1. Open Charles/Fiddler → Configure proxy → Install certificate
+2. Run app → View traffic (mixed with ads/analytics)
+3. Manually filter to find request to debug
+4. Friction: Setup takes 10-15 minutes, ads create noise
 
-**User muốn block ads:**
-1. Cài uBlock Origin (chỉ browser) hoặc Pi-hole (cần hardware)
-2. Không biết app nào đang gửi request đi đâu
-3. Friction: Không có visibility vào traffic
+**User wanting to block ads:**
+1. Install uBlock Origin (browser only) or Pi-hole (requires hardware)
+2. Don't know which apps are sending requests where
+3. Friction: No visibility into traffic
 
 ---
 
 ## Market Timing
 
-- **Tại sao NOW?** Developer tools market đang bùng nổ, remote work tăng nhu cầu debug tools, HTTP/3 tạo cơ hội cho tool mới hỗ trợ protocol mới
-- **Ai đã thử và thất bại?** Không có case study rõ ràng về failure trong segment này
-- **Tailwinds (thuận lợi)**:
-  - Electron/Tauri cho phép build cross-platform nhanh
-  - Developer community lớn, dễ reach qua GitHub/HN/Reddit
-  - Trend open source monetization (freemium, sponsorship)
-  - Emerging markets (SEA, India) có nhiều developer nhưng ít tool affordable
-- **Headwinds (bất lợi)**:
-  - mitmproxy đã free và powerful (cần differentiate rõ)
-  - Browser DevTools ngày càng mạnh hơn
-  - SSL/TLS complexity tăng, harder to intercept
+- **Why NOW?** Developer tools market is booming, remote work increases demand for debug tools, HTTP/3 creates opportunity for new tools supporting new protocols
+- **Who tried and failed?** No clear case studies of failures in this segment
+- **Tailwinds**:
+  - Electron/Tauri enable fast cross-platform builds
+  - Large developer community, easy to reach via GitHub/HN/Reddit
+  - Open source monetization trends (freemium, sponsorship)
+  - Emerging markets (SEA, India) have many developers but few affordable tools
+- **Headwinds**:
+  - mitmproxy is already free and powerful (need clear differentiation)
+  - Browser DevTools are getting stronger
+  - SSL/TLS complexity is increasing, harder to intercept
 
 ---
 
@@ -136,12 +136,12 @@ Thị trường developer tools cho HTTP debugging đang tăng trưởng ổn đ
 
 | Risk | Severity | Mitigation |
 |------|----------|------------|
-| **mitmproxy cạnh tranh trực tiếp** | HIGH | Focus vào UX/simplicity, không phải features |
-| **Browser DevTools cải thiện** | MEDIUM | Target non-browser traffic (mobile apps, desktop apps) |
+| **mitmproxy direct competition** | HIGH | Focus on UX/simplicity, not features |
+| **Browser DevTools improvement** | MEDIUM | Target non-browser traffic (mobile apps, desktop apps) |
 | **SSL certificate trust issues** | MEDIUM | Clear documentation, one-click setup |
-| **Monetization khó** | MEDIUM | Freemium model: free cơ bản, paid cho team features |
-| **Market saturation (paid tools)** | LOW | Differentiate bằng free + modern UX |
-| **Legal/privacy concerns** | LOW | Rõ ràng: chỉ local traffic, không gửi data ra ngoài |
+| **Monetization difficulty** | MEDIUM | Freemium model: free core, paid for team features |
+| **Market saturation (paid tools)** | LOW | Differentiate with free + modern UX |
+| **Legal/privacy concerns** | LOW | Clear: only local traffic, no data sent externally |
 
 ---
 
@@ -149,32 +149,32 @@ Thị trường developer tools cho HTTP debugging đang tăng trưởng ổn đ
 
 ### Recommended Direction
 
-- Build **cross-platform desktop app** (Electron/Tauri) kết hợp local proxy + ad-blocking + traffic inspector
-- **Free core** với premium features cho teams (collaboration, cloud sync)
-- Target **solo developers và QA engineers** trước, sau đó expand sang privacy users
+- Build **cross-platform desktop app** (Electron/Tauri) combining local proxy + ad-blocking + traffic inspector
+- **Free core** with premium features for teams (collaboration, cloud sync)
+- Target **solo developers and QA engineers** first, then expand to privacy users
 
 ### Quick Wins
 
-- Tích hợp **blocklist phổ biến** (EasyList, uBlock filters) để block ads ngay từ đầu
-- **One-click SSL setup** - tự động install certificate, không cần manual config
-- **Modern UI** với filter/search nhanh - differentiate với mitmproxy CLI
+- Integrate **popular blocklists** (EasyList, uBlock filters) to block ads from the start
+- **One-click SSL setup** - auto-install certificate, no manual config needed
+- **Modern UI** with fast filter/search - differentiate from mitmproxy CLI
 
 ### Long-term Plays
 
-- **Team collaboration** - Share traffic sessions, replay requests cùng nhau
-- **Rule engine** - Custom rules để modify/mock requests (như Proxyman)
-- **Mobile companion** - iOS/Android app để capture traffic từ mobile devices
-- **Plugin ecosystem** - Cho phép community build extensions
+- **Team collaboration** - Share traffic sessions, replay requests together
+- **Rule engine** - Custom rules to modify/mock requests (like Proxyman)
+- **Mobile companion** - iOS/Android app to capture traffic from mobile devices
+- **Plugin ecosystem** - Allow community to build extensions
 
 ---
 
 ## Assumptions & Limitations
 
-- **Assumption**: SAM ~$500M ước tính, chưa có báo cáo riêng cho HTTP proxy tools segment
-- **Assumption**: Ad-blocker user count (763M) từ các báo cáo 2023-2024, có thể đã thay đổi
-- **Limitation**: Không access được G2/Capterra reviews để lấy user pain points trực tiếp
-- **Limitation**: Pricing của Charles Proxy không verify được trực tiếp từ website
-- **Data gap**: Không có số liệu chính xác về revenue của Proxyman/Charles
+- **Assumption**: SAM ~$500M estimated, no dedicated reports for HTTP proxy tools segment
+- **Assumption**: Ad-blocker user count (763M) from 2023-2024 reports, may have changed
+- **Limitation**: No access to G2/Capterra reviews to get user pain points directly
+- **Limitation**: Charles Proxy pricing not directly verified from website
+- **Data gap**: No accurate revenue figures for Proxyman/Charles
 
 ---
 
